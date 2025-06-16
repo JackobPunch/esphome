@@ -1,0 +1,109 @@
+substitutions:
+  name: boneio-8-s-01
+  friendly_name: "BoneIO ESP 8x10A Switches"
+  serial_prefix: "espm" #Don't change it.
+
+esphome:
+  name: "${name}"
+  friendly_name: "${friendly_name}"
+  name_add_mac_suffix: true
+  project:
+    name: boneio.8_10-switches
+    version: "0.1"
+
+esp32:
+  board: esp32dev
+
+# WiFi configuration (replace with your credentials)
+wifi:
+  ssid: "TCL-2SHW-2.4GHz"
+  password: "k439qU7if7Ab"
+  ap:
+    ssid: "BoneIO-Fallback"
+    password: "fallbackpassword"
+
+captive_portal:
+
+logger:
+api:
+  reboot_timeout: 0s
+ota:
+  platform: esphome
+
+web_server:
+  port: 80
+  local: true
+
+time:
+  - platform: homeassistant
+    timezone: Europe/Warsaw
+    id: homeassistant_time
+
+# Example: 8 outputs and 8 inputs directly on ESP32 GPIOs
+switch:
+  - platform: gpio
+    name: "OUT 1"
+    id: out_01
+    pin: GPIO16
+  - platform: gpio
+    name: "OUT 2"
+    id: out_02
+    pin: GPIO17
+  - platform: gpio
+    name: "OUT 3"
+    id: out_03
+    pin: GPIO18
+  - platform: gpio
+    name: "OUT 4"
+    id: out_04
+    pin: GPIO19
+  - platform: gpio
+    name: "OUT 5"
+    id: out_05
+    pin: GPIO21
+  - platform: gpio
+    name: "OUT 6"
+    id: out_06
+    pin: GPIO22
+  - platform: gpio
+    name: "OUT 7"
+    id: out_07
+    pin: GPIO23
+  - platform: gpio
+    name: "OUT 8"
+    id: out_08
+    pin: GPIO25
+
+binary_sensor:
+  - platform: gpio
+    name: "IN 01"
+    id: in_01
+    pin: GPIO26
+  - platform: gpio
+    name: "IN 02"
+    id: in_02
+    pin: GPIO27
+  - platform: gpio
+    name: "IN 03"
+    id: in_03
+    pin: GPIO32
+  - platform: gpio
+    name: "IN 04"
+    id: in_04
+    pin: GPIO33
+  - platform: gpio
+    name: "IN 05"
+    id: in_05
+    pin: GPIO34
+  - platform: gpio
+    name: "IN 06"
+    id: in_06
+    pin: GPIO35
+  - platform: gpio
+    name: "IN 07"
+    id: in_07
+    pin: GPIO36
+  - platform: gpio
+    name: "IN 08"
+    id: in_08
+    pin: GPIO39
